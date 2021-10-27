@@ -26,5 +26,10 @@ struct MainScreen: View {
             }
         }
         .preferredColorScheme(.dark)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: Text(alertItem.title),
+                  message: Text(alertItem.message),
+                  dismissButton: alertItem.dismissButton)
+        }
     }
 }
