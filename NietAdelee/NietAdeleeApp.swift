@@ -11,7 +11,7 @@ import SwiftUI
 struct NietAdeleeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Home()
         }
     }
 }
