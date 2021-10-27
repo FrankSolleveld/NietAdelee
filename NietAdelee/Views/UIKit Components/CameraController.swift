@@ -10,6 +10,7 @@ import AVFoundation
 
 enum CameraError {
     case invalidDeviceInput
+    case badAccess
 }
 
 protocol CameraControllerDelegate: AnyObject {
@@ -20,6 +21,7 @@ final class CameraController: UIViewController {
     let captureSession = AVCaptureSession()
     var preview: AVCaptureVideoPreviewLayer?
     weak var cameraDelegate: CameraControllerDelegate?
+    var output = AVCapturePhotoOutput()
 
     init(cameraDelegate: CameraControllerDelegate) {
         super.init(nibName: nil, bundle: nil)
@@ -32,7 +34,7 @@ final class CameraController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCaptureSession()
+        checkForPermissions()
     }
 
     override func viewDidLayoutSubviews() {
@@ -42,6 +44,26 @@ final class CameraController: UIViewController {
             return
         }
         previewLayer.frame = view.layer.bounds
+    }
+
+    func checkForPermissions() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { (status) in
+                if status {
+                    self.setupCaptureSession()
+                }
+            }
+        case .restricted:
+            cameraDelegate?.didSurface(error: .badAccess)
+        case .denied:
+            cameraDelegate?.didSurface(error: .badAccess)
+        case .authorized:
+            setupCaptureSession()
+            return
+        @unknown default:
+            cameraDelegate?.didSurface(error: .badAccess)
+        }
     }
 
     private func setupCaptureSession() {
@@ -65,6 +87,13 @@ final class CameraController: UIViewController {
             return
         }
 
+        if self.captureSession.canAddOutput(self.output) {
+            self.captureSession.addOutput(self.output)
+        } else {
+            cameraDelegate?.didSurface(error: .invalidDeviceInput)
+            return
+        }
+
         preview = AVCaptureVideoPreviewLayer(session: captureSession)
         guard let previewLayer = preview else { return }
         previewLayer.videoGravity = .resizeAspectFill
@@ -72,5 +101,4 @@ final class CameraController: UIViewController {
 
         captureSession.startRunning()
     }
-
 }

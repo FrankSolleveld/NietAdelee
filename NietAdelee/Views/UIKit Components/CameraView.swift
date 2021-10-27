@@ -32,6 +32,8 @@ struct CameraView: UIViewControllerRepresentable {
             switch error {
             case .invalidDeviceInput:
                 cameraView.alertItem = AlertContext.invalidDeviceInput
+            case .badAccess:
+                cameraView.alertItem = AlertContext.badAccess
             }
         }
     }

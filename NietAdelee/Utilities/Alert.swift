@@ -19,4 +19,9 @@ struct AlertContext {
         title: "Invalid Device Input",
         message: "Something is wrong with the camera. We are unable to capture the input.",
         dismissButton: .default(Text("OK")))
+
+    static let badAccess = AlertItem(
+        title: "No Camera Access",
+        message: "The Preview screen will remain blank.",
+        dismissButton: .default(Text("OK")))
 }

@@ -24,7 +24,8 @@ struct Home: View {
 
     var body: some View {
         ZStack {
-            MainCameraScreen(activeView: self.activeView)
+            MainScreen(activeView: self.activeView)
+                .cornerRadius(3)
                 .animation(.easeInOut)
             PicturesView(activeView: self.activeView)
                 .offset(x: self.activeView == currentView.right ? 0 : screenWidth)

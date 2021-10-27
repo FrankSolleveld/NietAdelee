@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainCameraScreen: View {
+struct MainScreen: View {
 
     @StateObject var viewModel = CameraViewModel()
     @State var activeView: currentView
@@ -20,8 +20,8 @@ struct MainCameraScreen: View {
                 Spacer()
                     .frame(height: 1)
                 CameraView(alertItem: $viewModel.alertItem)
+                    .cornerRadius(10)
                     .edgesIgnoringSafeArea(.vertical)
-                Spacer()
                 CameraControls()
             }
         }
