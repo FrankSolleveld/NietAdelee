@@ -17,7 +17,7 @@ protocol CameraControllerDelegate: AnyObject {
     func didSurface(error: CameraError)
 }
 
-final class CameraController: UIViewController {
+final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     let captureSession = AVCaptureSession()
     var preview: AVCaptureVideoPreviewLayer?
     weak var cameraDelegate: CameraControllerDelegate?
@@ -100,5 +100,19 @@ final class CameraController: UIViewController {
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
+    }
+
+    func takePicture() {
+        DispatchQueue.global(qos: .background).async {
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            self.captureSession.stopRunning()
+        }
+    }
+
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if error != nil {
+            return
+        }
+        print("Picture taken...")
     }
 }

@@ -13,7 +13,7 @@ struct CameraControls: View {
             Spacer()
             Button(
                 action: {
-                    print("picture taken")
+                    // Take Picture
                 }, label: {
                     Circle()
                         .foregroundColor(.white)
