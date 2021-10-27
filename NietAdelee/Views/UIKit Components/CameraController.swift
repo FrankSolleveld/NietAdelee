@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftUI
 
 enum CameraError {
     case invalidDeviceInput
@@ -17,15 +18,16 @@ protocol CameraControllerDelegate: AnyObject {
     func didSurface(error: CameraError)
 }
 
-final class CameraController: UIViewController {
+final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     let captureSession = AVCaptureSession()
     var preview: AVCaptureVideoPreviewLayer?
     weak var cameraDelegate: CameraControllerDelegate?
     var output = AVCapturePhotoOutput()
+    var pictureData =  Data(count: 0)
+    let photoManager = PhotoManager()
 
-    init(cameraDelegate: CameraControllerDelegate) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.cameraDelegate = cameraDelegate
     }
 
     required init?(coder: NSCoder) {
@@ -100,5 +102,33 @@ final class CameraController: UIViewController {
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
+    }
+
+    func rotateCamera() {
+        print("Camera should be rotated here.")
+    }
+
+    func takePicture() {
+        DispatchQueue.global(qos: .background).async {
+            self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+            self.captureSession.stopRunning()
+        }
+    }
+
+    func retakePicture() {
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.startRunning()
+        }
+    }
+
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if error != nil {
+            return
+        }
+        print("Picture taken...")
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        if let uiImage = UIImage(data: imageData) {
+            self.photoManager.store(image: uiImage, forKey: "\(uiImage)")
+        }
     }
 }

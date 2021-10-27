@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainScreen: View {
 
-    @StateObject var viewModel = CameraViewModel()
+    @StateObject var viewModel = MainViewModel()
     @State var activeView: currentView
 
     var body: some View {
@@ -26,5 +26,10 @@ struct MainScreen: View {
             }
         }
         .preferredColorScheme(.dark)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: Text(alertItem.title),
+                  message: Text(alertItem.message),
+                  dismissButton: alertItem.dismissButton)
+        }
     }
 }
