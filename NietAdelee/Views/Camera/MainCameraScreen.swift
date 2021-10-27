@@ -7,9 +7,10 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainCameraScreen: View {
 
     @StateObject var viewModel = CameraViewModel()
+    @State var activeView: currentView
 
     var body: some View {
         ZStack {
@@ -25,11 +26,5 @@ struct ContentView: View {
             }
         }
         .preferredColorScheme(.dark)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
