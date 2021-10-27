@@ -128,7 +128,7 @@ final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         print("Picture taken...")
         guard let imageData = photo.fileDataRepresentation() else { return }
         if let uiImage = UIImage(data: imageData) {
-            photoManager.store(image: uiImage, forKey: "\(uiImage)")
+            self.photoManager.store(image: uiImage, forKey: "\(uiImage)")
         }
     }
 }
