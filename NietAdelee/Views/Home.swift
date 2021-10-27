@@ -26,11 +26,11 @@ struct Home: View {
         ZStack {
             MainScreen(activeView: self.activeView)
                 .cornerRadius(3)
-                .animation(.default)
+                .animation(.easeInOut)
             PicturesView(activeView: self.activeView)
                 .offset(x: self.activeView == currentView.right ? 0 : screenWidth)
                 .offset(x: activeView != .center ? viewState.width : 0)
-                .animation(.default)
+                .animation(.easeInOut)
 
         }
         .gesture(
