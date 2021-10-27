@@ -11,6 +11,11 @@
 		956A1F8D27294F190091B08D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1F8C27294F190091B08D /* ContentView.swift */; };
 		956A1F8F27294F1A0091B08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A1F8E27294F1A0091B08D /* Assets.xcassets */; };
 		956A1F9227294F1B0091B08D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 956A1F9127294F1B0091B08D /* Preview Assets.xcassets */; };
+		956A1F9A272953650091B08D /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1F99272953650091B08D /* CameraView.swift */; };
+		956A1F9C272953730091B08D /* CameraControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1F9B272953730091B08D /* CameraControls.swift */; };
+		956A1FA2272956AB0091B08D /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FA1272956AB0091B08D /* CameraController.swift */; };
+		956A1FA527295AF20091B08D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FA427295AF20091B08D /* Alert.swift */; };
+		956A1FA827295C700091B08D /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FA727295C700091B08D /* CameraViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		956A1F8C27294F190091B08D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		956A1F8E27294F1A0091B08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		956A1F9127294F1B0091B08D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		956A1F99272953650091B08D /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		956A1F9B272953730091B08D /* CameraControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControls.swift; sourceTree = "<group>"; };
+		956A1FA1272956AB0091B08D /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		956A1FA427295AF20091B08D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		956A1FA727295C700091B08D /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +61,9 @@
 		956A1F8927294F180091B08D /* NietAdelee */ = {
 			isa = PBXGroup;
 			children = (
+				956A1FA327295AD80091B08D /* Utilities */,
 				956A1F8A27294F190091B08D /* NietAdeleeApp.swift */,
-				956A1F8C27294F190091B08D /* ContentView.swift */,
+				956A1F98272953500091B08D /* Views */,
 				956A1F8E27294F1A0091B08D /* Assets.xcassets */,
 				956A1F9027294F1B0091B08D /* Preview Content */,
 			);
@@ -65,6 +76,42 @@
 				956A1F9127294F1B0091B08D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		956A1F98272953500091B08D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				956A1FA627295C430091B08D /* View Models */,
+				956A1FA02729565D0091B08D /* UIKit Components */,
+				956A1F8C27294F190091B08D /* ContentView.swift */,
+				956A1F9B272953730091B08D /* CameraControls.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		956A1FA02729565D0091B08D /* UIKit Components */ = {
+			isa = PBXGroup;
+			children = (
+				956A1F99272953650091B08D /* CameraView.swift */,
+				956A1FA1272956AB0091B08D /* CameraController.swift */,
+			);
+			path = "UIKit Components";
+			sourceTree = "<group>";
+		};
+		956A1FA327295AD80091B08D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				956A1FA427295AF20091B08D /* Alert.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		956A1FA627295C430091B08D /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				956A1FA727295C700091B08D /* CameraViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				956A1FA527295AF20091B08D /* Alert.swift in Sources */,
+				956A1F9C272953730091B08D /* CameraControls.swift in Sources */,
 				956A1F8D27294F190091B08D /* ContentView.swift in Sources */,
+				956A1F9A272953650091B08D /* CameraView.swift in Sources */,
+				956A1FA827295C700091B08D /* CameraViewModel.swift in Sources */,
 				956A1F8B27294F190091B08D /* NietAdeleeApp.swift in Sources */,
+				956A1FA2272956AB0091B08D /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +324,7 @@
 				DEVELOPMENT_TEAM = SDFJB9ATTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to take a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +354,7 @@
 				DEVELOPMENT_TEAM = SDFJB9ATTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use your camera to take a photo.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
