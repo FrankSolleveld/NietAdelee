@@ -10,6 +10,7 @@ import SwiftUI
 enum currentView {
     case center
     case right
+    case left
 }
 
 let screenSize = UIScreen.main.bounds
@@ -31,6 +32,62 @@ struct Home: View {
                 .animation(.easeInOut)
 
         }
+        .gesture(
+            (self.activeView == currentView.center) ?
+            DragGesture().onChanged { value in
+                self.viewState = value.translation
+            }
+                .onEnded { value in
+                    if value.predictedEndTranslation.width > screenWidth / 2 {
+                        self.activeView = currentView.left
+                        self.viewState = .zero
+                    }
+                    else if value.predictedEndTranslation.width < -screenWidth / 2 {
+                        self.activeView = currentView.right
+                        self.viewState = .zero
+                    }
+                    else {
+                        self.viewState = .zero
+                    }
+                }
+            :
+                DragGesture()
+                .onChanged { value in
+                    switch self.activeView {
+                    case .left:
+                        guard value.translation.width < 1 else { return }
+                        self.viewState = value.translation
+                    case .right:
+                        guard value.translation.width > 1 else { return }
+                        self.viewState = value.translation
+                    case .center:
+                        self.viewState = value.translation
+                    }
+                }
+                .onEnded { value in
+                    switch self.activeView {
+                    case .left:
+                        if value.predictedEndTranslation.width < -screenWidth / 2 {
+                            self.activeView = .center
+                            self.viewState = .zero
+                        }
+                        else {
+                            self.viewState = .zero
+                        }
+                    case .right:
+                        if value.predictedEndTranslation.width > screenWidth / 2 {
+                            self.activeView = .center
+                            self.viewState = .zero
+                        }
+                        else {
+                            self.viewState = .zero
+                        }
+                    case .center:
+                        self.viewState = .zero
+                    }
+                }
+
+        )
     }
 }
 
