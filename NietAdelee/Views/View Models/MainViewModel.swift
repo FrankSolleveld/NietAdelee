@@ -7,6 +7,6 @@
 
 import SwiftUI
 
-final class CameraViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     @Published var alertItem: AlertItem?
 }
