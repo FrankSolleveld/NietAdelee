@@ -10,9 +10,11 @@ import SwiftUI
 struct CameraView: UIViewControllerRepresentable {
 
     @Binding var alertItem: AlertItem?
+    static let controller = CameraController()
 
     func makeUIViewController(context: Context) -> CameraController {
-        CameraController(cameraDelegate: context.coordinator)
+        CameraView.controller.cameraDelegate = context.coordinator
+        return CameraView.controller
     }
 
     func updateUIViewController(_ uiViewController: CameraController, context: Context) {}

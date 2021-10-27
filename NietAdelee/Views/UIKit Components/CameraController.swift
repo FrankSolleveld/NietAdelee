@@ -22,10 +22,11 @@ final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     var preview: AVCaptureVideoPreviewLayer?
     weak var cameraDelegate: CameraControllerDelegate?
     var output = AVCapturePhotoOutput()
+    var pictureData =  Data(count: 0)
+    let photoManager = PhotoManager()
 
-    init(cameraDelegate: CameraControllerDelegate) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        self.cameraDelegate = cameraDelegate
     }
 
     required init?(coder: NSCoder) {
@@ -114,5 +115,8 @@ final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
             return
         }
         print("Picture taken...")
+        guard let imageData = photo.fileDataRepresentation() else { return }
+        self.pictureData = imageData
+
     }
 }

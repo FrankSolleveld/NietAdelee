@@ -10,17 +10,21 @@ import SwiftUI
 struct PicturesView: View {
 
     @State var activeView: currentView
+    @State var pictures = Pictures.exampleData
 
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
             NavigationView {
-                HStack {
-                    Text("A list of pictures will be placed here.")
+                List(pictures) { picture in
+                    NavigationLink(destination: DetailView(picture: picture)) {
+                        PictureListView(picture: picture)
+                    }
                 }
                 .navigationTitle(Text("Pictures"))
             }
         }
     }
 }
+

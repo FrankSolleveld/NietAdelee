@@ -18,6 +18,10 @@
 		956A1FA827295C700091B08D /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FA727295C700091B08D /* CameraViewModel.swift */; };
 		956A1FAA2729603C0091B08D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FA92729603C0091B08D /* Home.swift */; };
 		956A1FAE272960E10091B08D /* PicturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FAD272960E10091B08D /* PicturesView.swift */; };
+		956A1FB027297E5F0091B08D /* Picture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FAF27297E5F0091B08D /* Picture.swift */; };
+		956A1FB2272981C40091B08D /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FB1272981C40091B08D /* PhotoManager.swift */; };
+		956A1FB4272989140091B08D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FB3272989140091B08D /* DetailView.swift */; };
+		956A1FB627298D190091B08D /* PictureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956A1FB527298D190091B08D /* PictureListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		956A1FA727295C700091B08D /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		956A1FA92729603C0091B08D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		956A1FAD272960E10091B08D /* PicturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturesView.swift; sourceTree = "<group>"; };
+		956A1FAF27297E5F0091B08D /* Picture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picture.swift; sourceTree = "<group>"; };
+		956A1FB1272981C40091B08D /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		956A1FB3272989140091B08D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		956A1FB527298D190091B08D /* PictureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				956A1FA427295AF20091B08D /* Alert.swift */,
+				956A1FB1272981C40091B08D /* PhotoManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -123,6 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				956A1FAD272960E10091B08D /* PicturesView.swift */,
+				956A1FAF27297E5F0091B08D /* Picture.swift */,
+				956A1FB3272989140091B08D /* DetailView.swift */,
+				956A1FB527298D190091B08D /* PictureListView.swift */,
 			);
 			path = Pictures;
 			sourceTree = "<group>";
@@ -207,13 +219,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				956A1FA527295AF20091B08D /* Alert.swift in Sources */,
+				956A1FB4272989140091B08D /* DetailView.swift in Sources */,
 				956A1F9C272953730091B08D /* CameraControls.swift in Sources */,
 				956A1FAE272960E10091B08D /* PicturesView.swift in Sources */,
 				956A1F8D27294F190091B08D /* MainScreen.swift in Sources */,
 				956A1F9A272953650091B08D /* CameraView.swift in Sources */,
 				956A1FA827295C700091B08D /* CameraViewModel.swift in Sources */,
+				956A1FB027297E5F0091B08D /* Picture.swift in Sources */,
+				956A1FB2272981C40091B08D /* PhotoManager.swift in Sources */,
 				956A1F8B27294F190091B08D /* NietAdeleeApp.swift in Sources */,
 				956A1FAA2729603C0091B08D /* Home.swift in Sources */,
+				956A1FB627298D190091B08D /* PictureListView.swift in Sources */,
 				956A1FA2272956AB0091B08D /* CameraController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
