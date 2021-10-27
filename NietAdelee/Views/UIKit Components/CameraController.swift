@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftUI
 
 enum CameraError {
     case invalidDeviceInput
@@ -103,10 +104,20 @@ final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         captureSession.startRunning()
     }
 
+    func rotateCamera() {
+        print("Camera should be rotated here.")
+    }
+
     func takePicture() {
         DispatchQueue.global(qos: .background).async {
             self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
             self.captureSession.stopRunning()
+        }
+    }
+
+    func retakePicture() {
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.startRunning()
         }
     }
 
@@ -116,7 +127,8 @@ final class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         }
         print("Picture taken...")
         guard let imageData = photo.fileDataRepresentation() else { return }
-        self.pictureData = imageData
-
+        if let uiImage = UIImage(data: imageData) {
+            photoManager.store(image: uiImage, forKey: "\(uiImage)")
+        }
     }
 }
