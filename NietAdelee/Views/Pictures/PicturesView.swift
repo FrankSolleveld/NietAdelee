@@ -12,6 +12,15 @@ struct PicturesView: View {
     @State var activeView: currentView
 
     var body: some View {
-        Text("Pictures View")
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
+            NavigationView {
+                HStack {
+                    Text("A list of pictures will be placed here.")
+                }
+                .navigationTitle(Text("Pictures"))
+            }
+        }
     }
 }
